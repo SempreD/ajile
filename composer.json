@@ -1,4 +1,6 @@
 {
+    "name": "sempre/rag-bundle",
+    "description": "Symfony bundle for RAG embedding and Documents loading",
     "type": "project",
     "license": "proprietary",
     "minimum-stability": "stable",
