@@ -3,33 +3,20 @@ namespace App\Service\Application;
 
 use GuzzleHttp\Client;
 
-class OpenAiEmbeddingService
+class MistralEmbeddingService
 {
     private Client $client;
 
     public function __construct(private string $apiKey)
     {
-        $this->apiKey = $apiKey;
         $this->client = new Client([
-            'base_uri' => 'https://api.openai.com/v1/',
+            'base_uri' => 'https://api.mistral.ai/v1/', // adapte selon ton provider
             'headers' => [
                 'Authorization' => "Bearer {$apiKey}",
                 'Content-Type'  => 'application/json',
             ],
         ]);
     }
-
-    /*public function embed(string $text): array
-    {
-        $response = $this->client->post('embeddings', [
-            'json' => [
-                'model' => 'text-embedding-3-small',
-                'input' => $text
-            ]
-        ]);
-        $data = json_decode($response->getBody()->getContents(), true);
-        return $data['data'][0]['embedding'];
-    }*/
 
     public function embed(string $text): array
     {

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Service\Documentation;
+namespace App\Service\Application;
 
 use Smalot\PdfParser\Parser as PdfParser;
 
