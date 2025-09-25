@@ -1,0 +1,9 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    Sempre\RAGBundle\:
+        resource: '../../*'
+        exclude: '../../{DependencyInjection,Entity,Resources,Tests,Kernel.php}'
