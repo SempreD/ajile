@@ -1,9 +1,37 @@
+# This file is the entry point to configure your own services.
+# Files in the packages/ subdirectory configure your dependencies.
+
+# Put parameters here that don't need to change on each machine where the app is deployed
+# https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
+parameters:
+
 services:
     _defaults:
         autowire: true
         autoconfigure: true
         public: false
 
+    # Auto-chargement de tous les services du bundle
     Sempre\RAGBundle\:
-        resource: '../../*'
-        exclude: '../../{DependencyInjection,Entity,Resources,Tests,Kernel.php}'
+        resource: '../../'
+        exclude: '../../{DependencyInjection,Entity,Resources,Tests}'
+
+    # Configuration explicite pour MistralEmbeddingService
+    Sempre\RAGBundle\Service\MistralEmbeddingService:
+        arguments:
+            $apiKey: '%rag.mistral_api_key%'
+
+    # Configuration explicite pour MistralEmbeddingService
+    Sempre\RAGBundle\Service\MistralService:
+        arguments:
+            $apiKey: '%rag.mistral_api_key%'
+
+     # Configuration explicite pour MistraOCRService
+    Sempre\RAGBundle\Service\MistraOCRService:
+        arguments:
+            $apiKey: '%rag.mistral_api_key%'
+
+    # Configuration explicite pour OpenAIEmbeddingService (optionnel)
+    Sempre\RAGBundle\Service\OpenAIEmbeddingService:
+        arguments:
+            $apiKey: '%rag.openai_api_key%'

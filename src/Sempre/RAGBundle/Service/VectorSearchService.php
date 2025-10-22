@@ -1,5 +1,5 @@
 <?php
-namespace App\Service\Application;
+namespace Sempre\RAGBundle\Service;
 
 class VectorSearchService
 {

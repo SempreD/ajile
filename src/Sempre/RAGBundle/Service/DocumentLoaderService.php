@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Service\Application;
+namespace Sempre\RAGBundle\Service;
 
 use Smalot\PdfParser\Parser as PdfParser;
 

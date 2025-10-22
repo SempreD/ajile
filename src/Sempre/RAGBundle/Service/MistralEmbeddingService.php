@@ -1,5 +1,5 @@
 <?php
-namespace App\Service\Application;
+namespace Sempre\RAGBundle\Service;
 
 use GuzzleHttp\Client;
 
@@ -10,7 +10,7 @@ class MistralEmbeddingService
     public function __construct(private string $apiKey)
     {
         $this->client = new Client([
-            'base_uri' => 'https://api.mistral.ai/v1/', // adapte selon ton provider
+            'base_uri' => 'https://api.mistral.ai/v1/',
             'headers' => [
                 'Authorization' => "Bearer {$apiKey}",
                 'Content-Type'  => 'application/json',
@@ -30,7 +30,7 @@ class MistralEmbeddingService
 
         $response = $this->client->post('embeddings', [
             'json' => [
-                'model' => 'text-embedding-3-small',
+                'model' => 'mistral-embed',
                 'input' => $text
             ]
         ]);

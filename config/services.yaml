@@ -6,19 +6,22 @@
 parameters:
 
 services:
-    # default configuration for services in *this* file
     _defaults:
-        autowire: true      # Automatically injects dependencies in your services.
-        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+        autowire: true
+        autoconfigure: true
+        public: false
 
+    # Auto-chargement de tous les services du bundle
     Sempre\RAGBundle\:
-        resource: '../src/RAGBundle/*'
-        exclude: '../../src/RAGBundle/{DependencyInjection,Entity,Tests}'
+        resource: '../../'
+        exclude: '../../{DependencyInjection,Entity,Resources,Tests}'
 
-    Sempre\RAGBundle\Service\EmbeddingService:
+    # Configuration explicite pour MistralEmbeddingService
+    Sempre\RAGBundle\Service\MistralEmbeddingService:
+        arguments:
+            $apiKey: '%rag.mistral_api_key%'
+
+    # Configuration explicite pour OpenAIEmbeddingService (optionnel)
+    Sempre\RAGBundle\Service\OpenAIEmbeddingService:
         arguments:
             $apiKey: '%rag.openai_api_key%'
-            $provider: '%rag.embedding_provider%'
-
-    # add more service definitions when explicit configuration is needed
-    # please note that last definitions always *replace* previous ones
